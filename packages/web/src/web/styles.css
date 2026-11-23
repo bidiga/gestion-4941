@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
+
+@theme inline {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --color-vert: #1e4d2b;
+  --color-vert-2: #2f6b3f;
+  --color-vert-3: #4f8a5b;
+  --color-vert-deep: #143820;
+  --color-or: #c9962b;
+  --color-or-2: #e3b858;
+  --color-terre: #b4552d;
+  --color-beige: #f4ecdd;
+  --color-sable: #e6d8bf;
+  --color-blanc: #fffdf8;
+  --color-encre: #1c2118;
+  --color-gris: #6f6a5c;
+  --color-background: var(--color-beige);
+  --color-foreground: var(--color-encre);
+  --color-border: var(--color-sable);
+  --color-ring: var(--color-or);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html, body { @apply bg-beige text-encre font-sans antialiased; }
+  .font-display { font-family: var(--font-display); font-variation-settings: "opsz" 96; }
+  .tnum { font-variant-numeric: tabular-nums; }
+}
+
+.bogolan {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23e3b858' stroke-width='1.4' opacity='.5'%3E%3Cpath d='M0 28 L14 14 L28 28 L42 14 L56 28'/%3E%3Cpath d='M0 42 L14 28 L28 42 L42 28 L56 42'/%3E%3Ccircle cx='28' cy='6' r='2'/%3E%3Ccircle cx='0' cy='6' r='2'/%3E%3Ccircle cx='56' cy='6' r='2'/%3E%3Cpath d='M10 52h8M38 52h8'/%3E%3C/g%3E%3C/svg%3E");
+}
+.bogolan-dark {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%231e4d2b' stroke-width='1' opacity='.09'%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20'/%3E%3Cpath d='M20 40 L20 30 M0 0 L40 0'/%3E%3Ccircle cx='20' cy='32' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+.stripe-or { background: repeating-linear-gradient(90deg, #c9962b 0 18px, #1e4d2b 18px 24px, #b4552d 24px 36px, #1e4d2b 36px 42px); }
+
+.leaflet-container { font-family: var(--font-sans); background: #1c2118; }
+.leaflet-popup-content-wrapper { border-radius: 12px; }
+.smk-pin { display:grid; place-items:center; width:28px; height:28px; border-radius:50% 50% 50% 0; transform: rotate(-45deg); border:2px solid #fffdf8; box-shadow:0 2px 6px rgba(0,0,0,.35); }
+.smk-pin span { transform: rotate(45deg); color:#fffdf8; font: 700 10px/1 Outfit, sans-serif; }
+
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; inset: 0; padding: 0 !important; }
+  .no-print { display: none !important; }
+  @page { size: A4; margin: 10mm; }
+}
